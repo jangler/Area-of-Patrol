@@ -42,6 +42,10 @@
     PTOnMessage = featColor .. "Peace Time ~w~is now ~g~ in effect!"
     PTOffMessage = featColor .. "Peace Time ~w~is now ~r~off."
 
+    -- https://github.com/jorjic/fivem-docs/wiki/Ped-Types-&-Relationships
+    PTExemptPedTypes = {
+        [6] = true,
+    }
 
 --[[
     3. DrawText Settings

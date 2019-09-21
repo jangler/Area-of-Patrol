@@ -146,17 +146,19 @@ Citizen.CreateThread(function()
         local mph = math.ceil(GetEntitySpeed(veh) * 2.23)
 
         if peacetimeActive then
-            if peacetimeNS then
-                if IsControlPressed(0, 106) then
-                    ShowInfo("~r~Peacetime is enabled. ~n~~s~You can not shoot.")
+            if not PTExemptPedTypes[GetPedType(player)] then
+                if peacetimeNS then
+                    if IsControlPressed(0, 106) then
+                        ShowInfo("~r~Peacetime is enabled. ~n~~s~You can not shoot.")
+                    end
+                    SetPlayerCanDoDriveBy(player, false)
+                    DisablePlayerFiring(player, true)
+                    DisableControlAction(0, 140) -- Melee R
                 end
-                SetPlayerCanDoDriveBy(player, false)
-                DisablePlayerFiring(player, true)
-                DisableControlAction(0, 140) -- Melee R
-            end
-            if GetPedInVehicleSeat(veh, -1) == player then
-                if mph > maxPTSpeed then
-                    ShowInfo("~r~Please keep in mind peacetime is active! ~n~~w~Slow down or stop.")
+                if GetPedInVehicleSeat(veh, -1) == player then
+                    if mph > maxPTSpeed then
+                        ShowInfo("~r~Please keep in mind peacetime is active! ~n~~w~Slow down or stop.")
+                    end
                 end
             end
 
