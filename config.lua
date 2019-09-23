@@ -42,9 +42,13 @@
     PTOnMessage = featColor .. "Peace Time ~w~is now ~g~ in effect!"
     PTOffMessage = featColor .. "Peace Time ~w~is now ~r~off."
 
-    -- https://github.com/jorjic/fivem-docs/wiki/Ped-Types-&-Relationships
-    PTExemptPedTypes = {
-        [6] = true,
+    -- names of models exempt from peacetime restrictions
+    PTExemptions = {
+        "s_m_y_cop_01",
+        "s_f_y_cop_01",
+        "s_m_y_hwaycop_01",
+        "s_m_y_sheriff_01",
+        "s_f_y_sheriff_01",
     }
 
 --[[

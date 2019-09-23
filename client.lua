@@ -16,6 +16,15 @@ local AOPxNew = 0.660
 local AOPyNew = 1.430
 local AOPyNew2 = 1.430
 
+local function modelIsExempt(model)
+    for _, modelName in ipairs(PTExemptions) do
+        if model == GetHashKey(modelName) then
+            return true
+        end
+    end
+    return false
+end
+
 AddEventHandler('onClientMapStart', function()
     TriggerEvent('AOP:RunConfig')
     Wait(2000)
@@ -146,7 +155,7 @@ Citizen.CreateThread(function()
         local mph = math.ceil(GetEntitySpeed(veh) * 2.23)
 
         if peacetimeActive then
-            if not PTExemptPedTypes[GetPedType(player)] then
+            if not modelIsExempt(GetEntityModel(player)) then
                 if peacetimeNS then
                     if IsControlPressed(0, 106) then
                         ShowInfo("~r~Peacetime is enabled. ~n~~s~You can not shoot.")
